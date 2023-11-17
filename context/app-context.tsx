@@ -146,16 +146,16 @@ export const AppContextProvider = ({ children }: AppProviderPropTypes) => {
  
 
   const getUserTokens = async () => {
-    const response = await (contract!.connect(signer!) as Contract).getUserTokensData()
-    console.log({response})
+    // const response = await (contract!.connect(signer!) as Contract).getUserTokensData()
+    // console.log({response})
 
     setUserTokens(USER_TOKENS);
     // get from blockchain
   };
 
   const getUser = async () => {
-    const response = await (contract!.connect(signer!) as Contract).getUser()
-      console.log({response})
+    // const response = await (contract!.connect(signer!) as Contract).getUser()
+    //   console.log({response})
       setUser(USER)
   }
 
