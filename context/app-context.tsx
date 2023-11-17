@@ -129,20 +129,17 @@ export const AppContextProvider = ({ children }: AppProviderPropTypes) => {
   // }
 
 
-  const getAllSavingGroups = useCallback(()=> {
-    const getGroups = async () => {
+  const getAllSavingGroups = async () => {
+    
       if (!connected) {
         return;
       }
 
-      const groups = await (contract!.connect(signer!) as Contract).getAllGroups()
-      console.log({groups})
+      // const groups = await (contract!.connect(signer!) as Contract).getAllGroups()
+      // console.log({groups})
       setSavingGroups(SAVING_GROUPS)
-    }
 
-    getGroups()
-
-  }, [connected])
+  } 
  
 
   const getUserTokens = async () => {
