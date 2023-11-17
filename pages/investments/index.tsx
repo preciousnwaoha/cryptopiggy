@@ -24,9 +24,9 @@ export default function Home() {
 
   useEffect(() => {
     const getInvestments = async () => {
-      const response = await (contract!.connect(signer!) as Contract).getAllInvestments()
+      // const response = await (contract!.connect(signer!) as Contract).getAllInvestments()
 
-      console.log(response)
+      // console.log(response)
       setInvestments(INVESTMENTS)
       setLoading(false)
     }
