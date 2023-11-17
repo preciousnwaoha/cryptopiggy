@@ -25,3 +25,26 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+
+
+@layer base {
+  .btn {
+    @apply  rounded-md px-4 py-2;
+  };
+
+  .btn-text {
+    @apply border border-red-600;
+  };
+
+  .btn-small {
+    @apply px-4 py-2 text-xs;
+  };
+
+  .btn-contained {
+    @apply bg-red-600;
+  }
+
+  .btn-icon {
+    @apply px-3 py-1.5;
+  }
+}
