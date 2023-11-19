@@ -1,40 +1,62 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# CryptoPiggy
+## The Furture of Saving Crypto.
 
-## Getting Started
+### Table of Content
 
-First, run the development server:
+- [Description](#description)
+- [Tech](#tech)
+- [Roadmap](#roadmap)
+- [Project Status](#project-status)
+- [Developers](#developers)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+### **Description**
+Put simply Crypto piggy is a platform that enables crypto holders to maximize the value in saving thier crypto.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+But that does not sum it up. We have built a completely new protocol ([FIS Protocol](./FIS-Protocol/)) that works with the sole purpose of incentivizing users to save securly, and socially.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+CryptoPiggy is made up of savings(tokens data), FIS Coin, social savings groups, and vetted investment opportunities.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+**Heres a breakdown to understand how CryptoPiggy works**:
+1. TLOS: From the user account page we allow you to move your telos to Piggy, set a savings goal and duration.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+2. We support any ERC20 Token: Users Approve the contract to take the tokens and then add the amount to the contract.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+3. Saving Groups and Circles: A user has a group of addresses they are connected to by permissions. This list of addresses is called a *circle*. When a user creates a social savings group, they set a goal e.g. "We are saving to by our first Car", a target amount "100TLOS", a duration (6 months) etc. The Group visibility can be public or just within your circle.
 
-## Learn More
+4. Investments: Also called vetted opportunities, through a governing system the contract admin can post investment opportunities e.g "Chickin farm in Virginia", for users to convert from their savings balance. An investment uses the FIS protocol to create a profit risk investment. Meaning you can only lose what you were expecting to gain.
 
-To learn more about Next.js, take a look at the following resources:
+5. The smart contract.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### **Tech**
+This is a web3 app interacting with the TLOS Chain
+1. Ethers 6+ for interaction
+2. Next.js 14 for Frontend
+3. Solidity for contract
 
-## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+### What value does this all bring.
+1. CryptoPiggy introduces a system that incentivises the crypto community to save. Currently we are incentivised to spend.
+
+2. Even if you are not a fan of savings. This provides a more secure decentralized location for your token. Wallets get compromized everyday. Smart contracts don't have private keys and thus limited hacks.
+
+3. We promote a social finance system by enabling users work together to save.
+
+4. Instead of letting that cash just sit in your wallet, or any savings protocols, You can turn it into a Fair Investment (Risk = +-Profit).
+
+### ****Usage****
+
+It’s pretty easy to use, just visit [CryptoPiggy Website](http://cryptopiggy.vercel.app) 
+
+
+### **Project Status**
+Very much not complete, but were heading there.
+
+
+### **Developers**
+
+| Name | Role | Github |
+| --- | --- | --- |
+| Nwaoha Precious | Frontend x Ethers | [@preciousnwaoha](https://github.com/preciousnwaoha)   |
+| Adams David | Smart Contract x Hardhat | [@adamsdavee](https://github.com/adamsdavee) |
