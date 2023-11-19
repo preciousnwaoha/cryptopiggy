@@ -129,33 +129,30 @@ export const AppContextProvider = ({ children }: AppProviderPropTypes) => {
   // }
 
 
-  const getAllSavingGroups = useCallback(()=> {
-    const getGroups = async () => {
+  const getAllSavingGroups = async () => {
+    
       if (!connected) {
         return;
       }
 
-      const groups = await (contract!.connect(signer!) as Contract).getAllGroups()
-      console.log({groups})
+      // const groups = await (contract!.connect(signer!) as Contract).getAllGroups()
+      // console.log({groups})
       setSavingGroups(SAVING_GROUPS)
-    }
 
-    getGroups()
-
-  }, [connected])
+  } 
  
 
   const getUserTokens = async () => {
-    const response = await (contract!.connect(signer!) as Contract).getUserTokensData()
-    console.log({response})
+    // const response = await (contract!.connect(signer!) as Contract).getUserTokensData()
+    // console.log({response})
 
     setUserTokens(USER_TOKENS);
     // get from blockchain
   };
 
   const getUser = async () => {
-    const response = await (contract!.connect(signer!) as Contract).getUser()
-      console.log({response})
+    // const response = await (contract!.connect(signer!) as Contract).getUser()
+    //   console.log({response})
       setUser(USER)
   }
 

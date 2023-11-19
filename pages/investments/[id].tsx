@@ -34,8 +34,8 @@ export default function Home() {
   useEffect(() => {
 
     const getInvestment = async () => {
-      const response = await (contract!.connect(signer!) as Contract).getInvestmentById(investmentId)
-      console.log(response)
+      // const response = await (contract!.connect(signer!) as Contract).getInvestmentById(investmentId)
+      // console.log(response)
 
       const item = INVESTMENTS.filter((investment, index) => investment.id === investmentId)[0]
       setInvestment(item)

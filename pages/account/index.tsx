@@ -21,7 +21,7 @@ export default function Home() {
       getUser()
       getUserTokens()
     }
-  }, [connected, getUser])
+  }, [connected])
 
   if (!connected) {
     return <NotConnected />

@@ -25,7 +25,7 @@ export default function Home() {
         if (connected) {
             getAllSavingGroups()
         }
-    }, [connected, getAllSavingGroups])
+    }, [connected])
 
 
 
