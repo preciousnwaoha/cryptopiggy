@@ -12,7 +12,7 @@
 ### **Description**
 Put simply Crypto piggy is a platform that enables crypto holders to maximize the value in saving thier crypto.
 
-But that does not sum it up. We have built a completely new protocol ([FIS Protocol](./FIS-Protocol/)) that works with the sole purpose of incentivizing users to save securly, and socially.
+But that does not sum it up. We have built a completely new protocol ([FIS Protocol](./blockend/contracts/FIS_Protocol.sol/)) that works with the sole purpose of incentivizing users to save securly, and socially.
 
 CryptoPiggy is made up of savings(tokens data), FIS Coin, social savings groups, and vetted investment opportunities.
 
