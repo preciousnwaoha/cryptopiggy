@@ -1,4 +1,5 @@
 import React, {useContext} from 'react'
+import Link from 'next/link'
 import Nav from './nav'
 import NavDrawer from './nav-drawer'
 import {AppContext} from "@/context/app-context"
@@ -21,7 +22,10 @@ const Header = () => {
   return (
   
     <div className="fixed left-0 top-0 z-[100] flex w-full px-8 py-6 md:pb-6 md:pt-8 items-center justify-between border-b border-gray-300   backdrop-blur-2xl bg-black lg:static lg:w-auto  lg:rounded-xl lg:border lg:p-4">
+      <Link href={"/"}>
       <div className='text-red-600 font-bold text-lg'>CryptoPiggy</div>
+      </Link>
+      
 
       <Nav />
 
