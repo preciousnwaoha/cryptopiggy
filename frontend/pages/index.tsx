@@ -50,7 +50,7 @@ export default function Home() {
         <PaddedContainer className={``}>
           <h2 className={`text-5xl mb-6 text-center`}>A New Protocol for Savings and a Dedicated Ecosystem</h2>
             <p className={"text-4xl mb-6 font-light"}>
-              We are introducing a system were us crypto users are incentivized to <span className="text-primay-600 underline">save socially</span>, while being able to turn our savings into awesome low risk fair investments. All while maintaining a decentralized <span className="text-primay-600 underline">turstless</span> governing structure.
+              We are introducing a system were us crypto users are incentivized to <span className="text-primary-600 underline">save socially</span>, while being able to turn our savings into awesome low risk fair investments. All while maintaining a decentralized <span className="text-primary-600 underline">turstless</span> governing structure.
             </p>  
         </PaddedContainer>
       </div>
