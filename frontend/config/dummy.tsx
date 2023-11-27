@@ -10,7 +10,9 @@ export const USER: UserType = {
     circle: ["0x35eBcBE067d77915C27476ff24ab779B8fC3025e"],
     goal: 10,
     telosDuration: 30,
-    timeSaved: 1
+    timeSaved: 1,
+    investmentCollateral: 0,
+    investments: [],
 }
 
 
@@ -46,6 +48,7 @@ export const SAVING_GROUPS: GroupType[] = [
         title: "Save Towards Your Vacation",
         description: "Setup a personal savings goal for your Vacation.",
         targetAmount: 100,
+        category: 1,
         savedAmount: 63, 
         duration: 10, 
         visibility: 1,
@@ -56,6 +59,7 @@ export const SAVING_GROUPS: GroupType[] = [
         id: 2,
         creator: "0x7476deB582C24610511D16266E972DF5d2895bc7",
         targetAmount: 100,
+        category: 1,
         savedAmount: 63, 
         title: "Save for your business",
         description: "Setup a personal savings goal for your Business.",
@@ -70,6 +74,7 @@ export const SAVING_GROUPS: GroupType[] = [
         title: "Save for your Rent",
         description: "Setup a personal savings goal to pay your Rent.",
         targetAmount: 100,
+        category: 1,
         savedAmount: 63, 
         duration: 10, 
         visibility: 1,
