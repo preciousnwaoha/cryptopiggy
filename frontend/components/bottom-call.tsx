@@ -16,9 +16,9 @@ const BottomCall = () => {
 
  
   return (
-    <div className=' w-full flex items-center flex-col text-center'>
+    <div className=' w-full flex items-center flex-col text-center mt-12'>
     <PaddedContainer className={``}>
-      <h2 className={`text-4xl mb-8`}>Lets Save Crypto</h2>
+      <h2 className={`text-4xl md:text-6xl mb-8 md:mb-12`}>Lets Save Crypto</h2>
 
       {connected ? 
         <Link href="/account">

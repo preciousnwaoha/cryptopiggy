@@ -71,20 +71,20 @@ const AddToken = ({tokenAddress}: propTypes) => {
     <form className={`w-full p-4 flex flex-col justify-center items-center`} onSubmit={handleAddTokens}>
                 <div className="w-full mb-4">
                     <label htmlFor='grp-amount' className={`block mb-2`} >Amount</label>
-                    <input value={amount} id="grp-amount" placeholder="0.00" onChange={handleChangeAmount} className='rounded-lg px-4 py-2 w-full bg-stone-900 ' />
+                    <input value={amount} id="grp-amount" placeholder="0.00" onChange={handleChangeAmount} className='rounded-lg px-4 py-2 w-full text-black bg-zinc-100 dark:bg-stone-800 dark:text-white ' />
                 </div>
 
                 <div className='grid grid-cols-12 gap-4'>
                     <div className="w-full mb-4 text-center col-span-12 md:col-span-6 lg:col-span-5">
                         <label htmlFor='grp-duration' className={` block mb-2`}>Duration</label>
                         <div className='grid gap-4 grid-cols-2'>
-                            <select value={durationType} id="grp-duration" placeholder="days" onChange={handleDurationTypeChange} className='rounded-lg p-4 w-full bg-stone-900 text-center'  >
+                            <select value={durationType} id="grp-duration" placeholder="days" onChange={handleDurationTypeChange} className='rounded-lg p-4 w-full text-black bg-zinc-100 dark:bg-stone-800 dark:text-white text-center'  >
                                 {DURATION_TYPES.map((type, index) => {
                                     return <option key={index} value={index} className={`capitalize`}>{type}{(index === durationType) && ":"}</option>
                                 })}
                             </select>
 
-                            <input value={duration}  type="number" id="grp-target" placeholder="0 ETH" onChange={handleDurationChange} step="1" min="0" className='rounded-lg p-4 w-full bg-stone-900 text-center' />
+                            <input value={duration}  type="number" id="grp-target" placeholder="0 ETH" onChange={handleDurationChange} step="1" min="0" className='rounded-lg p-4 w-full text-black bg-zinc-100 dark:bg-stone-800 dark:text-white text-center' />
                         </div>
                     </div>
                 </div>               

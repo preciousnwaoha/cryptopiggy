@@ -59,7 +59,7 @@ const AddTelos = ( ) => {
     <form className={`w-full p-4 flex flex-col justify-center items-center `} onSubmit={handleAdd}>
                 <div className="w-full mb-4 rounded-lg">
                     <label htmlFor='grp-amount' className={`block mb-2`} >Amount</label>
-                    <input value={amount} id="grp-amount" placeholder="0.00" onChange={handleChangeAmount} className='rounded-lg px-4 py-2 w-full bg-stone-900 ' />
+                    <input value={amount} id="grp-amount" placeholder="0.00" onChange={handleChangeAmount} className='rounded-lg px-4 py-2 w-full text-black bg-zinc-100 dark:bg-stone-800 dark:text-white' />
                 </div>
 
                 {loading ? <div className='text-center my-4'>Loading</div>

@@ -20,7 +20,7 @@ export default function Home() {
       <div className={` `}>
       <PaddedContainer className={``}>
         <h1 className={`text-6xl font-semibold mb-16`}>About CryptoPiggy</h1>
-        <p className={`text-lg mb-4 `}>
+        <p className={`text-lg md:text-2xl mb-4 font-light`}>
           CryptoPiggy is you one stop platform of saving any ERC20 Token the right way. Ww are building and updating our protocols that facilitates our mission.
         </p>
       </PaddedContainer>
@@ -29,10 +29,10 @@ export default function Home() {
 
       <div className={`w-full`}>
       <PaddedContainer className={`text-center`}>
-        <h1 className={`text-4xl font-semibold mb-6`}>The Team</h1>
+        <h1 className={`text-4xl font-semibold mb-6 md:mb-12`}>The Team</h1>
 
-        <div className='grid grid-cols-1 sm:grid-cols-2 gap-4 '>
-        <div className='flex flex-col rounded-xl justify-center rounder-lg p-4 bg-stone-950 '>
+        <div className='grid grid-cols-1 sm:grid-cols-2 gap-4 text-white'>
+        <div className='flex flex-col rounded-xl justify-center rounder-2xl px-4 py-8 bg-stone-900 '>
           <h4 className='mb-4 text-xl font-semi-bold'>Precious Nwaoha</h4>
             <p className={`text-normal mb-4 `}>
               Web and Blockchain Dev.
@@ -40,7 +40,7 @@ export default function Home() {
             <div><a className='text-blue-400'>@pincode </a></div>
         </div>
 
-        <div className='flex flex-col rounded-xl justify-center rounder-lg p-4 bg-stone-950'>
+        <div className='flex flex-col rounded-xl justify-center rounder-2xl px-4 py-8 bg-stone-900'>
           <h4 className='mb-4 text-xl font-semi-bold'>Adams Dave</h4>
             <p className={`text-normal mb-4 `}>
               Smart Contract Developer

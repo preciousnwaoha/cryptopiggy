@@ -53,7 +53,7 @@ const GroupView = ({groupId}: propTypes) => {
         
         <div className='flex items-center mb-4'>
             
-            <div className={`w-full h-3 bg-gray-100 rounded-full`}>
+            <div className={`w-full h-3 bg-zinc-300 dark:bg-gray-100 rounded-full`}>
                 <div className={classGen}>
 
                 </div>

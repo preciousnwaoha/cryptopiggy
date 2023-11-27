@@ -119,13 +119,13 @@ const CreateGroup = () => {
             {!loading ? <form className={`border w-full max-w-[500px] p-4`} onSubmit={handleCreateGroup}>
                 <div className="w-full mb-4">
                     <label htmlFor='grp-title' className={` block mb-2`}>Title</label>
-                    <input value={title} id="grp-title" placeholder="Save for your Vacation." onChange={handleTitleChange} className='rounded-lg px-4 py-2 w-full bg-stone-950 ' />
+                    <input value={title} id="grp-title" placeholder="Save for your Vacation." onChange={handleTitleChange} className='rounded-lg px-4 py-2 w-full text-black bg-zinc-100 dark:bg-stone-900 dark:text-white ' />
                 </div>
 
                 <div className="w-full mb-4">
                     <label htmlFor='grp-title' className={` block mb-2`}>Description</label>
                     <div className='rounded-lg w-full h-[200px] overflow-hidden'>
-                        <textarea value={description} id="grp-title" placeholder="Save for your Vacation." onChange={handleDescriptionChange} className=' px-4 py-4 w-full h-full bg-stone-950 overflow-hidden' ></textarea>
+                        <textarea value={description} id="grp-title" placeholder="Save for your Vacation." onChange={handleDescriptionChange} className=' px-4 py-4 w-full h-full text-black bg-zinc-100 dark:bg-stone-900 dark:text-white overflow-hidden' ></textarea>
                     </div>
                     
                 </div>
@@ -134,24 +134,24 @@ const CreateGroup = () => {
                 <div className='grid grid-cols-12 gap-4'>
                     <div className="w-full mb-4 text-center col-span-12 md:col-span-6  lg:col-span-4">
                         <label htmlFor='grp-target' className={`block mb-2 `}>Goal</label>
-                        <input value={target}  type="number" id="grp-target" min="0"  step="0.0000001" placeholder="0" onChange={handleTargetChange} className='rounded-lg p-4 w-full bg-stone-950 text-center' />
+                        <input value={target}  type="number" id="grp-target" min="0"  step="0.0000001" placeholder="0" onChange={handleTargetChange} className='rounded-lg p-4 w-full text-black bg-zinc-100 dark:bg-stone-800 dark:text-white text-center' />
                     </div>
                     <div className="w-full mb-4 text-center col-span-12 md:col-span-6 lg:col-span-5">
                         <label htmlFor='grp-duration' className={` block mb-2`}>Duration</label>
                         <div className='grid gap-4 grid-cols-2'>
-                            <select value={durationType} id="grp-duration" placeholder="days" onChange={handleDurationTypeChange} className='rounded-lg p-4 w-full bg-stone-950 text-center'  >
+                            <select value={durationType} id="grp-duration" placeholder="days" onChange={handleDurationTypeChange} className='rounded-lg p-4 w-full text-black bg-zinc-100 dark:bg-stone-800 dark:text-white text-center'  >
                                 {DURATION_TYPES.map((type, index) => {
                                     return <option key={index} value={index} className={`capitalize`}>{type}{(index === durationType) && ":"}</option>
                                 })}
                             </select>
 
-                            <input value={duration}  type="number" id="grp-target" placeholder="0 ETH" onChange={handleDurationChange} step="1" min="0" className='rounded-lg p-4 w-full bg-stone-950 text-center' />
+                            <input value={duration}  type="number" id="grp-target" placeholder="0 ETH" onChange={handleDurationChange} step="1" min="0" className='rounded-lg p-4 w-full text-black bg-zinc-100 dark:bg-stone-800 dark:text-white text-center' />
                         </div>
                     </div>
 
                     <div className=" w-full mb-4 text-center col-span-12 lg:col-span-3">
                         <label htmlFor='grp-visibility' className={`lg:block mb-2 mr-4 hidden `}>Visibility</label>
-                        <select value={visibility} id="grp-visibility" placeholder="days" onChange={handleVisibilityChange} className='rounded-lg p-4 bg-stone-950 text-center w-full'  >
+                        <select value={visibility} id="grp-visibility" placeholder="days" onChange={handleVisibilityChange} className='rounded-lg p-4 text-black bg-zinc-100 dark:bg-stone-800 dark:text-white text-center w-full'  >
                                 {VISIBILITY_TYPES.map((type, index) => {
                                     return <option key={index} value={index} className={`capitalize`}>{type}</option>
                                 })}

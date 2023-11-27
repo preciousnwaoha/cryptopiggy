@@ -12,7 +12,7 @@ const Summary = () => {
 
 
   return (
-    <div className='flex flex-col sm:flex-row justify-between rounded-lg bg-stone-950  p-4 mb-8'>
+    <div className='flex flex-col sm:flex-row justify-between rounded-lg text-black bg-zinc-100 dark:bg-stone-900 dark:text-white  p-4 mb-8'>
           <div className={``}>
             <div className='text-5xl font-semibold mb-4'>
               {ethers.formatEther(`${ user?.telosBalance}`)} <span className='uppercase text-sm'>tlos</span>

@@ -135,7 +135,7 @@ const NewToken = () => {
             setOpenNewToken(false)
         }}>&times;</button>
 
-        <p className='uppercase font-light mb-6 text-center'>Contract is allowed to save <span className='text-red-600 font-semibold '>{allowance} PGY</span></p>
+        <p className='uppercase font-light mb-6 text-center'>Contract is allowed to save <span className='text-red-500 dark:text-red-600 font-semibold '>{allowance} PGY</span></p>
         {approved ? <div className='flex text-center flex-col items-center'>
             
             <h4 className='text-4xl font-light mb-8'>You about to save {formatEther(parseEther(amount || "0"))} PGY</h4>
@@ -150,7 +150,7 @@ const NewToken = () => {
                             
                         <div className=''>
                             <label htmlFor='token-amount' className={` block mb-2 text-center`}>Duration</label>
-                            <select value={tokenAddress} id="token-amount" placeholder="days" onChange={handleTokenChange} className='rounded-lg p-4 w-full bg-stone-900 text-center mb-4'  >
+                            <select value={tokenAddress} id="token-amount" placeholder="days" onChange={handleTokenChange} className='rounded-lg p-4 w-full text-black bg-zinc-100 dark:bg-stone-800 dark:text-white text-center mb-4'  >
                                 {SUPPORTED_TOKENS.map((token, index) => {
                                     return <option key={index} value={token.address} className={`capitalize`}>{token.name} {`(${token.symbol})`}</option>
                                 })}
@@ -158,7 +158,7 @@ const NewToken = () => {
 
                         <div className="w-full mb-4">
                             <label htmlFor='grp-amount' className={`block mb-2 text-center`} >Amount</label>
-                            <input value={amount} id="grp-amount" placeholder="0.00" onChange={handleChangeAmount} className='rounded-lg px-4 py-2 w-full bg-stone-900 ' />
+                            <input value={amount} id="grp-amount" placeholder="0.00" onChange={handleChangeAmount} className='rounded-lg px-4 py-2 w-full text-black bg-zinc-100 dark:bg-stone-800 dark:text-white ' />
                         </div>
 
                     </div>

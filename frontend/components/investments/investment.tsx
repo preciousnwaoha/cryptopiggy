@@ -10,7 +10,7 @@ const Investment = ({title, id, duration, status, depositPrice, percentInterest 
     const durationInWords = duration
 
   return (
-    <div className='rounded-xl p-8 shadow-4 bg-stone-950 max-w-[400px] md:max-w-none mx-auto'>
+    <div className='rounded-2xl p-8 shadow-4 text-black bg-zinc-100 dark:bg-stone-900 dark:text-white max-w-[400px] md:max-w-none mx-auto'>
         <h4 className="text-2xl font-semibold mb-4">{title}</h4>
 
         <div className='flex justify-between items-end'>

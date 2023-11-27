@@ -49,8 +49,8 @@ const Token = ({tokenAddress, tokenBalance, saveDuration, timeSaved, tokenReward
     
 
   return (
-    <div className='rounded-lg p-4 pt-12 bg-stone-950 relative overflow-hidden '>
-        <div className="absolute top-0 left-0 rounded-br-lg bg-red-600 px-4 py-1.5 text-sm z-index-[-1]">
+    <div className='rounded-lg p-4 pt-12 text-black bg-zinc-100 dark:bg-stone-900 dark:text-white relative overflow-hidden '>
+        <div className="absolute top-0 left-0 rounded-br-lg bg-red-500 dark:bg-red-600 px-4 py-1.5 text-sm z-index-[-1]">
             {symbol || "----"}
         </div>
          <div className={"z-[-1] grid grid-cols-12 gap-4   mb-4"}>
