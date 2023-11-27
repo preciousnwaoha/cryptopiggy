@@ -1,7 +1,9 @@
 import AppContext from '@/context/app-context'
 import { InvestmentType } from '@/types/site'
 import React, { useContext, useEffect, useState } from 'react'
-import { Contract } from 'ethers'
+import { Contract, ethers } from 'ethers'
+import { toWei } from '@/lib/utils'
+import { useRouter } from 'next/router'
 
 interface propTypes {
     investment: InvestmentType
@@ -9,17 +11,31 @@ interface propTypes {
 
 
 const InvestmentView = ({investment}: propTypes) => {
+  const router = useRouter()
     const appCtx = useContext(AppContext)
-    const {connected, contract, signer} = appCtx
+    const {connected, contract, signer, signerAddress} = appCtx
+    const [loading, setLoading] = useState(false)
+    const [invested, setInvested] = useState(false)
 
 
     const handleInvest = async () => {
-      const response = await (contract!.connect(signer!) as Contract).invest(investment.id)
+      setLoading(true)
+      const response = await (contract!.connect(signer!) as Contract)
+      ["invest(uint256)"]
+      (BigInt(`${investment.id}`))
 
-      console.log(response)
+      response.wait().then((res: any) => {
+        if (res.status === 1) {
+            console.log(res)
+            setInvested(true)
+            router.reload()
+        }
+    }).catch((err: any )=> {
+        console.log(err)
+    });
+    setLoading(false)
     }
     
-    const durationInWords = "6 months left"
 
   return (
     <div>
@@ -32,11 +48,26 @@ const InvestmentView = ({investment}: propTypes) => {
 
         <p className={`mb-4 `}>This investment is for {investment.duration} days</p>
 
-        <p className={`mb-4 `}>Minimum of {investment.depositPrice} TLOS</p>
+        <p className={`mb-4 `}>Minimum of {ethers.formatEther(`${investment.depositPrice}`)} TLOS</p>
         
-        <button className="btn btn-contained" onClick={handleInvest}>
+        
+        {!investment.investmentParticipants.includes(signerAddress!) && <>
+        {loading?  <div className='text-center my-4'>Pending...</div>
+        : <button className="btn btn-contained" onClick={handleInvest}>
+          Invest
+        </button>}
+        </>}
 
-        </button>
+        {investment.investmentParticipants.length > 0 ? <>
+            <h3 className='text-center text-lg font-semibold mb-2'>Investors</h3>
+            <div className='text-sm '>
+                {investment.investmentParticipants.map((inverstorAddr, index )=> {
+                    return <div key={index} className='mb-2'>
+                       {"1: "} { inverstorAddr}
+                    </div>
+                })}
+            </div>
+            </> : <h3 className='text-center text-lg font-semibold'>No Investors</h3>}
         
     </div>
   )

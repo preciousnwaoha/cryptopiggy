@@ -23,7 +23,9 @@ export default function Home() {
 
     useEffect(() => {
         if (connected) {
+          setLoading(true)
             getAllSavingGroups()
+            setLoading(false)
         }
     }, [connected])
 
@@ -88,6 +90,7 @@ export default function Home() {
                         title={group.title}
                         description={group.description}
                         createdAt={group.createdAt}
+                        category={group.category}
                         />
                     })}
                 </ul>

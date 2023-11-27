@@ -1,46 +1,69 @@
 import AppContext from '@/context/app-context'
-import React, { ChangeEvent, useContext, useState } from 'react'
-import { Contract } from 'ethers'
-import { toWei } from '../../context/app-context'
+import React, { ChangeEvent, FormEvent, useContext, useState } from 'react'
+import { Contract, parseEther } from 'ethers'
+import { useRouter } from 'next/router'
 
 
-const AddTelos = () => {
+
+const AddTelos = ( ) => {
+  const router = useRouter()
     const appCtx = useContext(AppContext)
-      const [amount, setAmount] = useState(0)
+      const [amount, setAmount] = useState("")
+      const [loading, setLoading] = useState(false)
 
       const {user, contract, signer} = appCtx
 
+
       const handleChangeAmount = (e: ChangeEvent<HTMLInputElement>) => {
-        setAmount(Number(e.target.value))
+ 
+        if (/^[0-9]+?\.?[0-9]*$/.test(e.target.value) || (e.target.value === "")) {
+          setAmount(e.target.value)
+        }
       }
 
 
 
 
-      const handleAdd = async () => {
-        if (amount <= 0) {
-          
+      const handleAdd = async (e: FormEvent) => {
+        e.preventDefault()
+        if (!Number(amount) || (Number(amount) <= 0) ) {
+
             return
         }
-        const wei = toWei(`${amount}`);
 
-        const response = await (contract!.connect(signer!) as Contract).saveTelos({value: wei, gasLimit: 100000})
-        console.log(response)
+        setLoading(true)
+
+        const tx = await (contract!.connect(signer!) as Contract)["saveTelos(uint256 duration)"]
+        (BigInt(`${user?.telosDuration}`), {
+        value: parseEther(`${amount}`)
+        })
+          
+        console.log({tx})
+
+        await tx.wait().then((res: any) => {
+          if (res.status === 1) {
+              // its done
+              console.log({res})
+              // router.reload()
+          }
+        }).catch((err: any )=> {
+          console.log(err)
+        });
+
+        setLoading(false)
         
-
       }
 
 
   return (
-    <form className={`w-full max-w-[500px] p-4`} onSubmit={handleAdd}>
-                <div className="w-full mb-4">
+    <form className={`w-full p-4 flex flex-col justify-center items-center `} onSubmit={handleAdd}>
+                <div className="w-full mb-4 rounded-lg">
                     <label htmlFor='grp-amount' className={`block mb-2`} >Amount</label>
-                    <input value={amount} id="grp-amount" placeholder="0.00" min="0" onChange={handleChangeAmount} className='rounded-lg px-4 py-2 w-full bg-stone-950 ' />
+                    <input value={amount} id="grp-amount" placeholder="0.00" onChange={handleChangeAmount} className='rounded-lg px-4 py-2 w-full bg-stone-900 ' />
                 </div>
 
-
-               
-               <button className='btn btn-contained my-4' type={"submit"}>Create Group</button>
+                {loading ? <div className='text-center my-4'>Loading</div>
+                : <button className='btn btn-contained my-4' type={"submit"}>Add Telos</button>}
 
             </form>
   )

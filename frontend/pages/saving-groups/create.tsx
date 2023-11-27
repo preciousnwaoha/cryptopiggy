@@ -2,7 +2,7 @@ import Header from '@/components/layout/header'
 import Image from 'next/image'
 import PaddedContainer from '@/components/layout/padded-container'
 import Footer from '@/components/layout/footer'
-import { useContext, useEffect } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import AppContext from '@/context/app-context'
 import NotConnected from '@/components/not-connected'
 import Group from '@/components/groups/group'
@@ -17,14 +17,7 @@ import {Contract} from 'ethers'
 export default function Home() {
     const appCtx = useContext(AppContext)
 
-    const {connected, contract, signer, savingGroups, getAllSavingGroups} = appCtx
-
-
-    useEffect(() => {
-        if (connected) {
-          getAllSavingGroups()
-        }
-    }, [connected])
+    const {connected, contract, signer, } = appCtx
 
 
 
@@ -32,22 +25,7 @@ export default function Home() {
         return <NotConnected />
     }
 
-    if (!savingGroups || (savingGroups.length === 0)) {
-        return <main
-        className={`flex min-h-screen flex-col items-center justify-between `}
-      >
-        <Header />
-      
-          <div className={`border mt-[78px] md:mt-[86px]`}>
-  
-              <PaddedContainer className={``}>
-                  <p className='text-3xl font-sembold text-center mb-4'>No Groups Yet!</p>
-            </PaddedContainer>
-        </div>
-
-    </main>
-    }
-
+    
 
   return (
     <main
@@ -64,6 +42,10 @@ export default function Home() {
         </div>
 
         <CreateGroup />
+      
+
+
+       
 
         
       <Footer />

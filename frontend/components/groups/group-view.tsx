@@ -1,26 +1,15 @@
 import AppContext from '@/context/app-context'
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { Contract } from 'ethers'
 
 interface propTypes {
     groupId: number
 }
 
-const dumdum =
-{
-    id: 2,
-    creator: "0x7476deB582C24610511D16266E972DF5d2895bc7",
-    targetAmount: 100,
-    title: "Save for your business",
-    description: "Setup a personal savings goal for your Business.",
-    duration: 10,
-    visibility: 1,
-    groupMembers: [],
-}
-
 const GroupView = ({groupId}: propTypes) => {
     const appCtx = useContext(AppContext)
     const {connected, savingGroups, contract, signer} = appCtx
+    const [joinLoading, setJoinLoading] = useState(false)
 
 
     const group = savingGroups.filter((group, index) => group.id = groupId)[0]
@@ -31,17 +20,29 @@ const GroupView = ({groupId}: propTypes) => {
 
 
     const handleJoinGroup = async () => {
-        
-        const response = await (contract!.connect(signer!) as Contract).joinGroup(groupId)
+        setJoinLoading(true)
+        const response = await (contract!.connect(signer!) as Contract)["joinGroup(uint256)"](groupId)
 
-        console.log(response)
-      
+        response.wait().then((res: any) => {
+            if (res.status === 1) {
+                // its done
+                console.log(res)
+            }
+        }).catch((err: any )=> {
+            console.log(err)
+        });
+
+        setJoinLoading(false)
     }
 
     
     const percentageSaved = group.savedAmount / group.targetAmount * 100;
 
-    const timeLeftInWords = "6 months left"
+    const timeLeftInWords = `${group.duration} days left`
+
+    const barWidth = percentageSaved ? `w-[${percentageSaved}%]` : "w-1"
+
+    const classGen = `${barWidth} h-full bg-red-600 rounded-full`
     
 
   return (
@@ -53,7 +54,7 @@ const GroupView = ({groupId}: propTypes) => {
         <div className='flex items-center mb-4'>
             
             <div className={`w-full h-3 bg-gray-100 rounded-full`}>
-                <div className={`w-[63%] h-full bg-red-600 rounded-full`}>
+                <div className={classGen}>
 
                 </div>
             </div>
@@ -79,10 +80,22 @@ const GroupView = ({groupId}: propTypes) => {
 
         <div className={``}>
 
-            <button className='btn btn-contained' onClick={handleJoinGroup}>
+            {!joinLoading ? <button className='btn btn-contained mb-4' onClick={handleJoinGroup}>
                 Join Group
-            </button>
-        
+            </button> : <div className='my-8 text-2xl mx-auto text-center text-red-600 '>
+                Joining Group...</div>}
+
+            {group.groupMembers.length > 0 ? <>
+            <h3 className='text-center text-lg font-semibold mb-2'>Members</h3>
+            <div className='text-sm '>
+                {group.groupMembers.map((member, index )=> {
+                    return <div key={index} className='mb-2'>
+                       {"1: "} { member}
+                    </div>
+                })}
+            </div>
+            </> : <h3 className='text-center text-lg font-semibold'>No Members</h3>}
+            
         </div>
         
     </div>

@@ -8,6 +8,8 @@ export type UserType = {
     goal: number,
     telosDuration: number,
     timeSaved: number
+    investmentCollateral: number,
+    investments: number[],
 }
 
 export type TokenSavingDataType = {
@@ -29,6 +31,7 @@ export type GroupType = {
     title: string,
     description: string,
     createdAt: number, 
+    category: number,
 }
 
 

@@ -34,11 +34,29 @@ export default function Home() {
   useEffect(() => {
 
     const getInvestment = async () => {
-      // const response = await (contract!.connect(signer!) as Contract).getInvestmentById(investmentId)
-      // console.log(response)
+      await (contract!.connect(signer!) as Contract)
+      ["getInvestmentById(uint256)"](investmentId).then(response => {
 
-      const item = INVESTMENTS.filter((investment, index) => investment.id === investmentId)[0]
-      setInvestment(item)
+        console.log(response)
+
+        let investment: InvestmentType = {
+          id: parseInt(response.id),
+            title: response.title,
+            description: response.description,
+            depositPrice: parseInt(response.depositPrice),
+            duration: parseInt(response.duration),
+            percentInterest: parseInt(response.percentInterest),
+            investmentParticipants: response.investmentParticipants.toArray(),
+            open: response.open,
+            status: parseInt(response.status),
+        };
+
+        setInvestment(investment)
+      }).catch(err => {
+        console.log(err)
+      })
+
+      
       setLoading(false)
     }
 
@@ -51,7 +69,7 @@ export default function Home() {
 
   console.log({investmentId})
 
-  if ((typeof investmentId === 'number') && (investmentId)  ) {
+  if ((typeof investmentId !== 'number') && !(investmentId)  ) {
     return <InvalidRoute />
   }
 

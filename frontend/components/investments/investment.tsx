@@ -1,6 +1,8 @@
 import Link from 'next/link'
 import React from 'react'
 import { InvestmentType } from '@/types/site'
+import { toWei } from '@/lib/utils'
+import { ethers } from 'ethers'
 
 const Investment = ({title, id, duration, status, depositPrice, percentInterest }: InvestmentType) => {
 
@@ -12,7 +14,7 @@ const Investment = ({title, id, duration, status, depositPrice, percentInterest 
         <h4 className="text-2xl font-semibold mb-4">{title}</h4>
 
         <div className='flex justify-between items-end'>
-        <p className='font-light text-3xl mb-4'>{depositPrice} TLOS</p>
+        <p className='font-light text-3xl mb-4'>{ethers.formatEther(`${depositPrice}`)} TLOS</p>
         <p className='font-light text-normal mb-4'>{durationInWords} seconds</p>
         </div>
         

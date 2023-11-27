@@ -1,6 +1,6 @@
 import AppContext from '@/context/app-context'
-import React, { ChangeEvent, useContext, useState } from 'react'
-import { Contract } from 'ethers'
+import { ChangeEvent, useContext, useState, FormEvent } from 'react'
+import { Contract, parseEther } from 'ethers'
 
 interface propTypes {
     tokenAddress: string
@@ -8,37 +8,57 @@ interface propTypes {
 
 const WithdrawToken = ({tokenAddress}: propTypes) => {
     const appCtx = useContext(AppContext)
-      const [amount, setAmount] = useState(0)
+      const [amount, setAmount] = useState("")
+      const [loading, setLoading] = useState(false)
 
 
       const {user, contract, signer} = appCtx
 
       const handleChangeAmount = (e: ChangeEvent<HTMLInputElement>) => {
-        setAmount(Number(e.target.value))
+        if (/^[0-9]+?\.?[0-9]*$/.test(e.target.value) || (e.target.value === "")) {
+          setAmount(e.target.value)
+        }
       }
 
 
-      const handleWithdraw = async () => {
-        if (amount <= 0) {
-          
-          return
-      }
-        const response = await (contract!.connect(signer!) as Contract).WithdrwaTokens(tokenAddress, amount, )
-        console.log(response)
+      const handleWithdraw = async (e: FormEvent) => {
+        e.preventDefault()
+        if (!Number(amount) || (Number(amount) <= 0) ) {
+            return
+        }
+
+        setLoading(true)
+        const tx = await (contract!.connect(signer!) as Contract)
+        ["withdrawTelos(address, uint)"]
+        (tokenAddress, parseEther(amount))
+        console.log({tx})
+
+        await tx.wait().then((res: any) => {
+          if (res.status === 1) {
+              // its done
+              console.log({res})
+              // router.reload()
+          }
+        }).catch((err: any )=> {
+          console.log(err)
+        });
+
+        setLoading(false)
+
       }
 
 
   return (
-    <form className={`w-full max-w-[500px] p-4`} onSubmit={handleWithdraw}>
+    <form className={`w-full p-4 flex flex-col justify-center items-center`} onSubmit={handleWithdraw}>
                 <div className="w-full mb-4">
                     <label htmlFor='grp-amount' className={`block mb-2`} >Amount</label>
-                    <input value={amount} id="grp-amount" placeholder="0.00" min="0" onChange={handleChangeAmount} className='rounded-lg px-4 py-2 w-full bg-stone-950 ' />
+                    <input value={amount} id="grp-amount" placeholder="0.00" min="0" onChange={handleChangeAmount} className='rounded-lg px-4 py-2 w-full bg-stone-900 ' />
                 </div>
 
 
                
-               <button className='btn btn-contained my-4' type={"submit"}>Create Group</button>
-
+                {loading ? <div className='text-center my-4'>Loading</div>
+                : <button className='btn btn-contained my-4' type={"submit"}>Withdraw Tokens</button>}
             </form>
   )
 }

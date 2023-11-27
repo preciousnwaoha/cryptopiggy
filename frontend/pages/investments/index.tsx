@@ -24,10 +24,27 @@ export default function Home() {
 
   useEffect(() => {
     const getInvestments = async () => {
-      // const response = await (contract!.connect(signer!) as Contract).getAllInvestments()
+      const response = await (contract!.connect(signer!) as Contract)
+      ["getAllInvestments()"]()
 
-      // console.log(response)
-      setInvestments(INVESTMENTS)
+      const investments: InvestmentType[] = []
+      // console.log(response.toArray())
+      response.map((investment:any) => {
+        investments.push({
+          id: parseInt(investment.id),
+          title: investment.title,
+          description: investment.description,
+          depositPrice: parseInt(investment.depositPrice),
+          duration: parseInt(investment.duration),
+          percentInterest: parseInt(investment.percentInterest),
+          investmentParticipants: investment.investmentParticipants.toArray(),
+          open: investment.open,
+          status: parseInt(investment.status),
+        })
+
+      })
+
+      setInvestments(investments)
       setLoading(false)
     }
 

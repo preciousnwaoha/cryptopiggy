@@ -4,7 +4,7 @@
 		"inputs": [
 			{
 				"internalType": "address",
-				"name": "circleAddress",
+				"name": "_circleAddress",
 				"type": "address"
 			}
 		],
@@ -25,30 +25,6 @@
 		"outputs": [],
 		"stateMutability": "nonpayable",
 		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "tokenAddress",
-				"type": "address"
-			}
-		],
-		"stateMutability": "nonpayable",
-		"type": "constructor"
-	},
-	{
-		"anonymous": false,
-		"inputs": [
-			{
-				"indexed": false,
-				"internalType": "bool",
-				"name": "circleMemberAdded",
-				"type": "bool"
-			}
-		],
-		"name": "CircleAdded",
-		"type": "event"
 	},
 	{
 		"inputs": [
@@ -124,60 +100,32 @@
 	{
 		"inputs": [
 			{
-				"internalType": "uint256",
-				"name": "id",
-				"type": "uint256"
-			},
-			{
-				"internalType": "enum FIS.GroupVisibility",
-				"name": "_visibility",
-				"type": "uint8"
+				"internalType": "address",
+				"name": "tokenAddress",
+				"type": "address"
 			}
 		],
-		"name": "editGroup",
-		"outputs": [],
 		"stateMutability": "nonpayable",
-		"type": "function"
+		"type": "constructor"
 	},
 	{
-		"inputs": [],
-		"name": "getUserTokensData",
-		"outputs": [
+		"anonymous": false,
+		"inputs": [
 			{
-				"components": [
-					{
-						"internalType": "address",
-						"name": "tokenAddress",
-						"type": "address"
-					},
-					{
-						"internalType": "uint256",
-						"name": "tokenBalance",
-						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
-						"name": "saveDuration",
-						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
-						"name": "timeSaved",
-						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
-						"name": "tokenRewards",
-						"type": "uint256"
-					}
-				],
-				"internalType": "struct FIS.TokenSavingsData[]",
-				"name": "",
-				"type": "tuple[]"
+				"indexed": true,
+				"internalType": "address[]",
+				"name": "circle",
+				"type": "address[]"
+			},
+			{
+				"indexed": false,
+				"internalType": "bool",
+				"name": "circleMemberAdded",
+				"type": "bool"
 			}
 		],
-		"stateMutability": "nonpayable",
-		"type": "function"
+		"name": "CircleAdded",
+		"type": "event"
 	},
 	{
 		"anonymous": false,
@@ -210,6 +158,11 @@
 					{
 						"internalType": "uint256",
 						"name": "targetAmount",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "savedAmount",
 						"type": "uint256"
 					},
 					{
@@ -278,6 +231,11 @@
 						"type": "uint256"
 					},
 					{
+						"internalType": "uint256",
+						"name": "savedAmount",
+						"type": "uint256"
+					},
+					{
 						"internalType": "enum FIS.GroupVisibility",
 						"name": "visibility",
 						"type": "uint8"
@@ -323,25 +281,6 @@
 		"type": "event"
 	},
 	{
-		"anonymous": false,
-		"inputs": [
-			{
-				"indexed": true,
-				"internalType": "uint256",
-				"name": "id",
-				"type": "uint256"
-			},
-			{
-				"indexed": false,
-				"internalType": "enum FIS.GroupVisibility",
-				"name": "_visibility",
-				"type": "uint8"
-			}
-		],
-		"name": "GroupVisibilityStatus",
-		"type": "event"
-	},
-	{
 		"inputs": [
 			{
 				"internalType": "uint256",
@@ -366,84 +305,6 @@
 		"outputs": [],
 		"stateMutability": "nonpayable",
 		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "id",
-				"type": "uint256"
-			}
-		],
-		"name": "leaveGroup",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"anonymous": false,
-		"inputs": [
-			{
-				"components": [
-					{
-						"internalType": "uint256",
-						"name": "id",
-						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
-						"name": "duration",
-						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
-						"name": "targetAmount",
-						"type": "uint256"
-					},
-					{
-						"internalType": "enum FIS.GroupVisibility",
-						"name": "visibility",
-						"type": "uint8"
-					},
-					{
-						"internalType": "string",
-						"name": "title",
-						"type": "string"
-					},
-					{
-						"internalType": "string",
-						"name": "description",
-						"type": "string"
-					},
-					{
-						"internalType": "uint256",
-						"name": "category",
-						"type": "uint256"
-					},
-					{
-						"internalType": "address[]",
-						"name": "groupMembers",
-						"type": "address[]"
-					},
-					{
-						"internalType": "address",
-						"name": "creator",
-						"type": "address"
-					},
-					{
-						"internalType": "uint256",
-						"name": "timeCreated",
-						"type": "uint256"
-					}
-				],
-				"indexed": false,
-				"internalType": "struct FIS.Group",
-				"name": "groupDetails",
-				"type": "tuple"
-			}
-		],
-		"name": "LeftGroup",
-		"type": "event"
 	},
 	{
 		"inputs": [
@@ -564,6 +425,13 @@
 		"type": "event"
 	},
 	{
+		"inputs": [],
+		"name": "updateRewards",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
 		"inputs": [
 			{
 				"internalType": "uint256",
@@ -608,113 +476,13 @@
 		"type": "function"
 	},
 	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"name": "allGroups",
+		"inputs": [],
+		"name": "circleMembers",
 		"outputs": [
 			{
-				"internalType": "uint256",
-				"name": "id",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "duration",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "targetAmount",
-				"type": "uint256"
-			},
-			{
-				"internalType": "enum FIS.GroupVisibility",
-				"name": "visibility",
-				"type": "uint8"
-			},
-			{
-				"internalType": "string",
-				"name": "title",
-				"type": "string"
-			},
-			{
-				"internalType": "string",
-				"name": "description",
-				"type": "string"
-			},
-			{
-				"internalType": "uint256",
-				"name": "category",
-				"type": "uint256"
-			},
-			{
-				"internalType": "address",
-				"name": "creator",
-				"type": "address"
-			},
-			{
-				"internalType": "uint256",
-				"name": "timeCreated",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
+				"internalType": "address[]",
 				"name": "",
-				"type": "uint256"
-			}
-		],
-		"name": "allInvestments",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "id",
-				"type": "uint256"
-			},
-			{
-				"internalType": "string",
-				"name": "title",
-				"type": "string"
-			},
-			{
-				"internalType": "string",
-				"name": "description",
-				"type": "string"
-			},
-			{
-				"internalType": "uint256",
-				"name": "depositPrice",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "duration",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "percentInterest",
-				"type": "uint256"
-			},
-			{
-				"internalType": "bool",
-				"name": "open",
-				"type": "bool"
-			},
-			{
-				"internalType": "enum FIS.Status",
-				"name": "status",
-				"type": "uint8"
+				"type": "address[]"
 			}
 		],
 		"stateMutability": "view",
@@ -739,6 +507,11 @@
 					{
 						"internalType": "uint256",
 						"name": "targetAmount",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "savedAmount",
 						"type": "uint256"
 					},
 					{
@@ -870,6 +643,11 @@
 					{
 						"internalType": "uint256",
 						"name": "targetAmount",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "savedAmount",
 						"type": "uint256"
 					},
 					{
@@ -1030,7 +808,7 @@
 					},
 					{
 						"internalType": "uint256",
-						"name": "Goal",
+						"name": "goal",
 						"type": "uint256"
 					},
 					{
@@ -1053,59 +831,40 @@
 		"type": "function"
 	},
 	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"name": "groupById",
+		"inputs": [],
+		"name": "getUserTokensData",
 		"outputs": [
 			{
-				"internalType": "uint256",
-				"name": "id",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "duration",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "targetAmount",
-				"type": "uint256"
-			},
-			{
-				"internalType": "enum FIS.GroupVisibility",
-				"name": "visibility",
-				"type": "uint8"
-			},
-			{
-				"internalType": "string",
-				"name": "title",
-				"type": "string"
-			},
-			{
-				"internalType": "string",
-				"name": "description",
-				"type": "string"
-			},
-			{
-				"internalType": "uint256",
-				"name": "category",
-				"type": "uint256"
-			},
-			{
-				"internalType": "address",
-				"name": "creator",
-				"type": "address"
-			},
-			{
-				"internalType": "uint256",
-				"name": "timeCreated",
-				"type": "uint256"
+				"components": [
+					{
+						"internalType": "address",
+						"name": "tokenAddress",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "tokenBalance",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "saveDuration",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "timeSaved",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "tokenRewards",
+						"type": "uint256"
+					}
+				],
+				"internalType": "struct FIS.TokenSavingsData[]",
+				"name": "",
+				"type": "tuple[]"
 			}
 		],
 		"stateMutability": "view",
@@ -1119,60 +878,6 @@
 				"internalType": "uint256",
 				"name": "",
 				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"name": "idToinvestment",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "id",
-				"type": "uint256"
-			},
-			{
-				"internalType": "string",
-				"name": "title",
-				"type": "string"
-			},
-			{
-				"internalType": "string",
-				"name": "description",
-				"type": "string"
-			},
-			{
-				"internalType": "uint256",
-				"name": "depositPrice",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "duration",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "percentInterest",
-				"type": "uint256"
-			},
-			{
-				"internalType": "bool",
-				"name": "open",
-				"type": "bool"
-			},
-			{
-				"internalType": "enum FIS.Status",
-				"name": "status",
-				"type": "uint8"
 			}
 		],
 		"stateMutability": "view",
@@ -1199,99 +904,6 @@
 				"internalType": "contract IERC20",
 				"name": "",
 				"type": "address"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "",
-				"type": "address"
-			},
-			{
-				"internalType": "address",
-				"name": "",
-				"type": "address"
-			}
-		],
-		"name": "userAddressToTokenToData",
-		"outputs": [
-			{
-				"internalType": "address",
-				"name": "tokenAddress",
-				"type": "address"
-			},
-			{
-				"internalType": "uint256",
-				"name": "tokenBalance",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "saveDuration",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "timeSaved",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "tokenRewards",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "",
-				"type": "address"
-			}
-		],
-		"name": "userAddressToUserData",
-		"outputs": [
-			{
-				"internalType": "address",
-				"name": "walletAddress",
-				"type": "address"
-			},
-			{
-				"internalType": "uint256",
-				"name": "telosBalance",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "telosDuration",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "timeSaved",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "rewardsEarned",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "Goal",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "investmentCollateral",
-				"type": "uint256"
 			}
 		],
 		"stateMutability": "view",

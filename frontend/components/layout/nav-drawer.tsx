@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import React, {useState} from 'react'
+import {AiOutlineMenu} from "react-icons/ai"
 
 const NAV_ITEMS = [
   {
@@ -67,7 +68,7 @@ const NavDrawer = () => {
   return (
     <>
         <button onClick={handleToggleOpen} className='inline-block md:hidden'>
-            Menu
+            <AiOutlineMenu />
         </button>
 
         <div className={`fixed top-0 w-[230px] z-[100] h-screen bg-stone-950 ${open ? "right-0": "right-[-230px]"} p-4 block md:hidden`}>

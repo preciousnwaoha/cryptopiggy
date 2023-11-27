@@ -4,11 +4,12 @@ import tokenArtifact from "@/config/utils/FISCoin.json";
 import { ethers, Contract } from "ethers";
 import {  GroupType,  InvestmentType,  TokenSavingDataType, UserType } from "@/types/site";
 import { SAVING_GROUPS, USER_TOKENS, USER } from "@/config/dummy";
+import { bigIntToString } from "@/lib/utils";
 
-const CONTRACT_ADDRESS = "0x8EFf341aBB3cC71214F33805F16aaCEDb574665a";
+export const CONTRACT_ADDRESS = "0x5C538b7DD2BdCA1da1b60E3Ff4a8b7a5e9F2170c" // "0x8EFf341aBB3cC71214F33805F16aaCEDb574665a";
 const contractABI = contractArtifact.abi;
-export const CONTRACT_OWNER = "0x5a89D7585EE663c2CE410eEb7070C0749CEA7CA5";
-export const TOKEN_ADDRESS = "0xD95100cEb4284CcFe8A6fd3b238c7B5EEA0B44c5"
+export const CONTRACT_OWNER = "0xBe1dB9047Ab848E4307705057B2890FCA7962C1D";
+export const TOKEN_ADDRESS = "0xe9134e7d586232d14C4768E3Dd755Ca19d5C8020" // "0xD95100cEb4284CcFe8A6fd3b238c7B5EEA0B44c5"
 const tokenABI = tokenArtifact.abi;
 
 type AppContextType = {
@@ -22,6 +23,7 @@ type AppContextType = {
   // allInvestments: InvestmentType[],
   contract: ethers.Contract | undefined,
   signer: ethers.JsonRpcSigner | undefined,
+  provider: ethers.BrowserProvider | undefined,
   setup: () => void,
   getUser: () => void,
   getUserTokens: () => void,
@@ -35,23 +37,14 @@ export const AppContext = createContext<AppContextType>({
   userTokens: [],
   user: undefined,
   savingGroups: [],
-  // userInvestments: [],
-  // allInvestments: [],
   contract: undefined,
   signer: undefined,
+  provider: undefined,
   setup: () => {},
   getUser: () => {},
   getUserTokens: () => {},
   getAllSavingGroups: () => {},
 });
-
-export const bigIntToString = (val: bigint) => {
-  return ethers.formatEther(val);
-};
-
-export const toWei = (val: string) => {
-  return ethers.parseEther(val);
-};
 
 interface AppProviderPropTypes {
   children: ReactNode;
@@ -76,8 +69,6 @@ export const AppContextProvider = ({ children }: AppProviderPropTypes) => {
     const [user, setUser] = useState<UserType | undefined>(undefined);
     const [userTokens, setUserTokens] = useState<TokenSavingDataType[]>([]);
     const [savingGroups, setSavingGroups] = useState<GroupType[]>([]);
-    // const [userInvestments, setUserInvestments] = useState<InvestmentType[]>([]);
-    // const [allInvestments, setAllInvestments] = useState<InvestmentType[]>([]);
 
   const setup = async () => {
     if (
@@ -98,14 +89,12 @@ export const AppContextProvider = ({ children }: AppProviderPropTypes) => {
         console.log({ signer });
 
         const address = await signer.getAddress();
-        // const address = "0x5a89D7585EE663c2CE410eEb7070C0749CEA7CA5"
         setSignerAddress(address);
         console.log({ address });
 
         const balance = await provider.getBalance(address);
         setTelosBalance(Number(bigIntToString(balance)));
-        // const balance = 456.53;
-        // setTelosBalance(balance)
+
 
         const mainContract = new ethers.Contract(
           CONTRACT_ADDRESS,
@@ -120,40 +109,90 @@ export const AppContextProvider = ({ children }: AppProviderPropTypes) => {
     }
   };
 
-  // const getUserInvestments = () => {
-
-  // }
-
-  // const getAllInvestments = () => {
-    
-  // }
-
 
   const getAllSavingGroups = async () => {
-    
+  
       if (!connected) {
         return;
       }
 
-      // const groups = await (contract!.connect(signer!) as Contract).getAllGroups()
-      // console.log({groups})
-      setSavingGroups(SAVING_GROUPS)
+
+      await (contract!.connect(signer!) as Contract)
+      ["getAllGroups()"]().then(response => {
+        const groups: GroupType[] = []
+        // console.log(response.toArray())
+        response.map((group:any) => {
+          groups.push({
+            id: parseInt(group.id),
+            targetAmount:  parseInt(group.targetAmount),
+            savedAmount:  parseInt(group.savedAmount || 0),
+            duration:  parseInt(group.duration),
+            visibility:  parseInt(group.visibility),
+            groupMembers: group.groupMembers.toArray(),
+            creator: group.creator,
+            title: group.title,
+            description: group.description,
+            createdAt:  parseInt(group.timeCreated),
+            category:  parseInt(group.category)
+          })
+
+        })
+        
+        setSavingGroups(groups)
+      })
+      
 
   } 
  
 
   const getUserTokens = async () => {
-    // const response = await (contract!.connect(signer!) as Contract).getUserTokensData()
-    // console.log({response})
+    if (!connected) {
+      return;
+    }
 
-    setUserTokens(USER_TOKENS);
-    // get from blockchain
+    await (contract!.connect(signer!) as Contract)
+    ["getUserTokensData()"]().then(response => {
+      console.log({response})
+      const tokensData: TokenSavingDataType[] = []
+      response.map((token:any) => {
+        console.log(token)
+        tokensData.push({
+          tokenAddress: token.tokenAddress,
+          tokenBalance: parseInt(token.tokenBalance),
+          saveDuration: parseInt(token.saveDuration),
+          timeSaved: parseInt(token.timeSaved),
+          tokenRewards: parseInt(token.tokenRewards),
+        })
+      })
+
+      setUserTokens(tokensData);
+    })
+    
   };
 
   const getUser = async () => {
-    // const response = await (contract!.connect(signer!) as Contract).getUser()
-    //   console.log({response})
-      setUser(USER)
+    if (!connected) {
+      return;
+    }
+
+    await (contract!.connect(signer!) as Contract)
+    ["getUser()"]().then(response => {
+      console.log({response})
+      const user: UserType = {
+        walletAddress: response.walletAddress,
+        telosBalance: parseInt(response.telosBalance),
+        telosDuration: parseInt(response.telosDuration),
+        timeSaved: parseInt(response.timeSaved),
+        tokens: response.tokens.toArray(),
+        rewardsEarned: parseInt(response.rewardsEarned),
+        groups: response.groups.toArray(),
+        circle: response.circle.toArray(),
+        goal: parseInt(response.goal),
+        investmentCollateral: parseInt(response.investmentColateral),
+        investments: response.investments.toArray(),
+      }
+      setUser(user)
+    })  
   }
 
 
@@ -169,6 +208,7 @@ export const AppContextProvider = ({ children }: AppProviderPropTypes) => {
         savingGroups,
         contract,
         signer,
+        provider,
         setup,
         getUser,
         getUserTokens,

@@ -1,5 +1,5 @@
 import { GroupType } from "@/types/site";
-import {ethers} from "ethers"
+import {ethers, parseEther} from "ethers"
 
 export const groupIdIsValid = (groupId: string, groups: GroupType[]) => {
 
@@ -42,4 +42,9 @@ export const formatAddress = (address: string) =>  {
 }
 
 
-const toWei = (ether: string) => ethers.parseEther(ether)
+export const toWei = (ether: string) => parseEther(ether)
+
+export const bigIntToString = (val: bigint) => {
+    return ethers.formatEther(val);
+  };
+  
