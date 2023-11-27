@@ -19,7 +19,7 @@ export default function Home() {
         <h1 className={`text-6xl font-semibold mb-6 text-center`}>Introducing the <br/>PIGGY Coin</h1>
         <p className={`text-lg mb-4 text-center`}>You should be incentivised to save, Saving is a good deed.</p>
 
-        <div className='grid grid-cols-3 gap-4 mt-16'>
+        <div className='grid sm:grid-cols-2 md:grid-cols-3 gap-4 mt-16 items-center'>
           <div className='rounded-lg p-4 bg-stone-950 text-center'>
               <h4 className='text-2xl mb-2 text-red-600'>10 million</h4>
               <p className='text-sm uppercase'>in circulation</p>
@@ -28,7 +28,7 @@ export default function Home() {
               <h4 className='text-2xl mb-2 text-red-600'>1 PGY</h4>
               <p className='text-sm uppercase'>per day</p>
           </div>
-          <div className='rounded-lg p-4 bg-stone-950 text-center'>
+          <div className='rounded-lg p-4 bg-stone-950 text-center mx-auto inline-block'>
               <h4 className='text-2xl mb-2 text-red-600'>ON TELOS</h4>
               <p className='text-sm uppercase'>blockchain</p>
           </div>
@@ -45,15 +45,15 @@ export default function Home() {
         <div className='grid grid-cols-2 gap-4 mt-16'>
           <div className='rounded-lg p-4 bg-stone-950'>
               <h4 className='text-2xl mb-2 text-red-600'>Pays you to Save.</h4>
-              <p className='text-normal '>in circulation</p>
+              <p className='text-normal '>By Saving your other tokens in the FIS protocol, you are incentivized with PGY token.</p>
           </div>
           <div className='rounded-lg p-4 bg-stone-950 '>
               <h4 className='text-2xl mb-2 text-red-600'>FAIR Investment</h4>
-              <p className='text-normal '>per day</p>
+              <p className='text-normal '>FIS Protocol is made possible because we can gieve you PGY as collateral while you wait for the contract term of your investment to expire.</p>
           </div>
           <div className='rounded-lg p-4 bg-stone-950'>
               <h4 className='text-2xl mb-2 text-red-600'>Build Ecosystem</h4>
-              <p className='text-normal '>blockchain</p>
+              <p className='text-normal '>PGY will help us build a celestial ecosystem for savings allowing mutichain and multitoken capabilities.</p>
           </div>
         </div>
       </PaddedContainer>

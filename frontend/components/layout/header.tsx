@@ -14,9 +14,13 @@ const Header = () => {
     setup()
   }
 
-  return (
-   
+  /*
     <div className="fixed left-0 top-0 z-[100] flex w-full px-8 py-6 md:pb-6 md:pt-8 items-center justify-between border-b border-gray-300 bg-gradient-to-b from-zinc-200  backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
+  */
+
+  return (
+  
+    <div className="fixed left-0 top-0 z-[100] flex w-full px-8 py-6 md:pb-6 md:pt-8 items-center justify-between border-b border-gray-300 bg-gradient-to-b from-zinc-200  backdrop-blur-2xl bg-black lg:static lg:w-auto  lg:rounded-xl lg:border lg:p-4">
       <div className='text-red-600 font-bold text-lg'>CryptoPiggy</div>
 
       <Nav />

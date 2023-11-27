@@ -30,8 +30,8 @@ export default function Home() {
       
       <div className={`min-h-[calc(100vh - 78px)] text-center`}>
       <PaddedContainer className={``}>
-        <h1 className={`text-6xl font-semibold mb-6`}>Crypt the Crypts</h1>
-        <p className={`text-lg mb-4 `}>Stop unnessacary spending, set a goal save in public, earn more for your patience, build your portfolio.</p>
+        <h1 className={`text-6xl font-semibold mb-6`}>Hold your the Crypto</h1>
+        <p className={`text-lg mb-4 `}>Stop unnessacary spending, set a goal, save in public, earn from your savings, and build your wallet portfolio.</p>
 
         {connected ? 
         <Link href="/account">
@@ -48,9 +48,9 @@ export default function Home() {
 
       <div className='w-full'>
         <PaddedContainer className={``}>
-          <h2 className={`text-5xl mb-6 text-center`}>A New Protocol for Savings and Dedicated Ecosystem</h2>
+          <h2 className={`text-5xl mb-6 text-center`}>A New Protocol for Savings and a Dedicated Ecosystem</h2>
             <p className={"text-4xl mb-6 font-light"}>
-              We are introducing a new token that is not built
+              We are introducing a system were us crypto users are incentivized to <span className="text-primay-600 underline">save socially</span>, while being able to turn our savings into awesome low risk fair investments. All while maintaining a decentralized <span className="text-primay-600 underline">turstless</span> governing structure.
             </p>  
         </PaddedContainer>
       </div>
