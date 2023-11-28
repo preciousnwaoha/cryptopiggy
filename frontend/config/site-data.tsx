@@ -12,8 +12,8 @@ export const VISIBILITY_TYPES = [
 
 export const SUPPORTED_TOKENS = [
     {
-        name: " Some Token",
-        symbol: "SMT",
-        address: "0xe9134e7d586232d14C4768E3Dd755Ca19d5C8020"
+        name: "FIS Coin",
+        symbol: "FIS",
+        address: "0x5FbDB2315678afecb367f032d93F642f64180aa3"
     }
 ]

@@ -6,10 +6,10 @@ import {  GroupType,  InvestmentType,  TokenSavingDataType, UserType } from "@/t
 import { SAVING_GROUPS, USER_TOKENS, USER } from "@/config/dummy";
 import { bigIntToString } from "@/lib/utils";
 
-export const CONTRACT_ADDRESS = "0x5C538b7DD2BdCA1da1b60E3Ff4a8b7a5e9F2170c" // "0x8EFf341aBB3cC71214F33805F16aaCEDb574665a";
+export const CONTRACT_ADDRESS = "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512" // Sepolia - "0x5C538b7DD2BdCA1da1b60E3Ff4a8b7a5e9F2170c"
 const contractABI = contractArtifact.abi;
 export const CONTRACT_OWNER = "0xBe1dB9047Ab848E4307705057B2890FCA7962C1D";
-export const TOKEN_ADDRESS = "0xe9134e7d586232d14C4768E3Dd755Ca19d5C8020" // "0xD95100cEb4284CcFe8A6fd3b238c7B5EEA0B44c5"
+export const TOKEN_ADDRESS = "0x5FbDB2315678afecb367f032d93F642f64180aa3" // Sepolia - "0xe9134e7d586232d14C4768E3Dd755Ca19d5C8020" 
 const tokenABI = tokenArtifact.abi;
 
 type AppContextType = {
